@@ -1,5 +1,6 @@
 name: "Build and Publish MkDocs Material"
 description: "Build and Publish MkDocs Material to GitHub Pages using squidfunk's Docker image"
+
 branding:
   icon: "layout"
   color: "green"
@@ -8,6 +9,14 @@ inputs:
   mkdocs-version:
     description: "MkDocs version"
     default: "latest"
+    required: false
+  working-dir:
+    description: "Folder where MkDocs will be called from"
+    default: "."
+    required: false
+  site-dir:
+    description: "Folder where MkDocs will save the generated site"
+    default: "site"
     required: false
   config-file:
     description: "Path to the mkdocs.yml file"
@@ -20,12 +29,16 @@ inputs:
 
 runs:
   using: "docker"
-  image: "docker://squidfunk/mkdocs-material:latest"
-  pre-entrypoint: |
-    ls -al /;
-    echo "PWD: ${PWD}";
-    ls -al "${PWD}";
-    echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}";
-    ls -al ${GITHUB_WORKSPACE};
-    echo "GITHUB_ACTION_PATH: ${GITHUB_ACTION_PATH}";
-    ls -al "${GITHUB_ACTION_PATH}";
+  image: "docker://squidfunk/mkdocs-material:${{ inputs.mkdocs-version }}"
+  env:
+    MKDOCS_WORKDIR: "${{ inputs.working-dir }}"
+    MKDOCS_REQSTXT: "${{ inputs.requirements }}"
+  entrypoint: "entrypoint.sh"
+  args:
+    - "build"
+    - "--verbose"
+    - "--clean"
+    - "--config-file"
+    - "${{ inputs.config-file }}"
+    - "--site-dir"
+    - "${{ inputs.site-dir }}"
