@@ -20,7 +20,7 @@ inputs:
     required: false
   requirements:
     description: "Path to the requirements.txt file"
-    default: "mkdocs-requirements.txt"
+    default: ""
     required: false
 
 runs:
