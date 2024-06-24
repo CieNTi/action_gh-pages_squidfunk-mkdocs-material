@@ -38,4 +38,4 @@ if [ -n "${MKDOCS_REQSTXT}" ]; then
 fi;
 
 # Mimic the original entrypoint
-/sbin/tini -- mkdocs "${@}";
+exec /sbin/tini -- mkdocs "${@}";
