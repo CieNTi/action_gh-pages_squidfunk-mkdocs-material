@@ -6,10 +6,6 @@ branding:
   color: "green"
 
 inputs:
-  mkdocs-version:
-    description: "MkDocs version"
-    default: "latest"
-    required: false
   working-dir:
     description: "Folder where MkDocs will be called from"
     default: "."
@@ -29,7 +25,7 @@ inputs:
 
 runs:
   using: "docker"
-  image: "docker://squidfunk/mkdocs-material:${{ github.event.inputs.mkdocs-version }}"
+  image: "docker://squidfunk/mkdocs-material:latest"
   env:
     MKDOCS_WORKDIR: "${{ inputs.working-dir }}"
     MKDOCS_REQSTXT: "${{ inputs.requirements }}"
