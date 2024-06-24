@@ -10,7 +10,7 @@ on:
       - '.github/workflows/test-action.yml'
 
 jobs:
-  "Test our action":
+  test-defaults:
     runs-on: "ubuntu-latest"
     steps:
       - name: "Checkout this repository"
