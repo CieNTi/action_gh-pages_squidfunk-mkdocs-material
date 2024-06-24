@@ -34,6 +34,7 @@ if [ -n "${MKDOCS_REQSTXT}" ]; then
   else
     echo "ERROR: Custom requirements file is defined but not found";
     exit 1;
+  fi;
 fi;
 
 # Mimic the original entrypoint

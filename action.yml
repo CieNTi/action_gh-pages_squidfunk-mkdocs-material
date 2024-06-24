@@ -29,7 +29,7 @@ inputs:
 
 runs:
   using: "docker"
-  image: "docker://squidfunk/mkdocs-material:latest"
+  image: "docker://squidfunk/mkdocs-material:${{ github.event.inputs.mkdocs-version }}"
   env:
     MKDOCS_WORKDIR: "${{ inputs.working-dir }}"
     MKDOCS_REQSTXT: "${{ inputs.requirements }}"
