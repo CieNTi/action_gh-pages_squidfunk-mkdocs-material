@@ -33,7 +33,7 @@ runs:
   env:
     MKDOCS_WORKDIR: "${{ inputs.working-dir }}"
     MKDOCS_REQSTXT: "${{ inputs.requirements }}"
-  entrypoint: "entrypoint.sh"
+  entrypoint: "/github/workspace/entrypoint.sh"
   args:
     - "build"
     - "--verbose"
