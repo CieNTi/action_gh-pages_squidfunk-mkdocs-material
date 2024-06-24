@@ -10,11 +10,11 @@ on:
       - '.github/workflows/test-action.yml'
 
 jobs:
-  my_first_job:
+  "Test our action":
     runs-on: "ubuntu-latest"
     steps:
       - name: "Checkout this repository"
         uses: "actions/checkout@v1"
 
       - name: "Launch our action"
-        uses: "./action.yml"
+        uses: "."
